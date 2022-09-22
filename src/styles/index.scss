@@ -132,6 +132,11 @@ body {
   align-items: center;
   color: $text-1;
   box-shadow: 0px 5px $main-key-shadow-1;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+  }
 
   &__action {
     text-transform: uppercase;
@@ -139,6 +144,10 @@ body {
     color: $white-1;
     background-color: $blue-key-background-1;
     box-shadow: 0px 5px $blue-key-shadow-1;
+
+    &:hover {
+      background-color: $action-toggle-1;
+    }
 
     &--reset {
       grid-column: 1 / 3;
@@ -148,6 +157,10 @@ body {
       background-color: $red-key-background-toggle-1;
       box-shadow: 0px 5px $red-key-shadow-1;
       grid-column: 3 / 5;
+
+      &:hover {
+        background-color: $equal-hover-1;
+      }
     }
   }
 }
