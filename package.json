@@ -1,0 +1,29 @@
+{
+  "name": "simple-calculator",
+  "version": "1.0.0",
+  "description": "A simple calculator app",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo",
+    "dev": "parcel src/index.html"
+  },
+  "keywords": [
+    "calculator",
+    "grid",
+    "flexbox",
+    "vanilla-js"
+  ],
+  "author": "Ruben",
+  "license": "MIT",
+  "dependencies": {
+    "parcel": "^2.7.0"
+  },
+  "xo": {
+    "space": true,
+    "prettier": true
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "xo": "^0.52.3"
+  }
+}
