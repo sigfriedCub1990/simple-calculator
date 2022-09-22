@@ -37,32 +37,36 @@
             </div>
           </div>
           <div class="display">
-            <input type="text" />
+            <input id="display" type="text" />
           </div>
         </div>
         <div class="calculator__pad">
-          <div class="key">7</div>
-          <div class="key">8</div>
-          <div class="key">9</div>
-          <div class="key key__action">Del</div>
+          <button value="7" class="key">7</button>
+          <button value="8" class="key">8</button>
+          <button value="9" class="key">9</button>
+          <button value="del" class="key key__action">Del</button>
           <!-- second row !-->
-          <div class="key">4</div>
-          <div class="key">5</div>
-          <div class="key">6</div>
-          <div class="key">+</div>
+          <button value="4" class="key">4</button>
+          <button value="5" class="key">5</button>
+          <button value="6" class="key">6</button>
+          <button value="+" class="key">+</button>
           <!-- third row !-->
-          <div class="key">1</div>
-          <div class="key">2</div>
-          <div class="key">3</div>
-          <div class="key">-</div>
+          <button value="1" class="key">1</button>
+          <button value="2" class="key">2</button>
+          <button value="3" class="key">3</button>
+          <button value="-" class="key">-</button>
           <!-- fourth row !-->
-          <div class="key">.</div>
-          <div class="key">0</div>
-          <div class="key">/</div>
-          <div class="key">x</div>
-          <!-- second row !-->
-          <div class="key key__action key__action--reset">Reset</div>
-          <div class="key key__action key__action--equal">=</div>
+          <button value="." class="key">.</button>
+          <button value="0" class="key">0</button>
+          <button value="/" class="key">/</button>
+          <button value="*" class="key">x</button>
+          <!-- last row !-->
+          <button value="clear" class="key key__action key__action--reset">
+            Reset
+          </button>
+          <button value="calc" class="key key__action key__action--equal">
+            =
+          </button>
         </div>
       </section>
     </main>
