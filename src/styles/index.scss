@@ -16,7 +16,6 @@ body {
 .container {
   height: 100vh;
   padding: 25px;
-  margin: 0 auto;
 }
 
 .calculator {
@@ -24,12 +23,14 @@ body {
   flex-direction: column;
   gap: 25px;
   height: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  justify-content: center;
 
   &__display {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    flex: 1; // maybe remove later
 
     .top {
       display: flex;
@@ -44,13 +45,14 @@ body {
           color: $white-1;
           font-size: 0.7rem;
           text-transform: uppercase;
+          align-self: flex-end;
         }
 
         &__selector {
           display: grid;
           grid-template-columns: repeat(5, minmax(3px, 10px));
-          grid-template-rows: repeat(2, 1fr);
-          column-gap: 5px;
+          grid-template-rows: repeat(2, 20px);
+          column-gap: 3px;
 
           .labels {
             display: flex;
@@ -59,33 +61,38 @@ body {
             grid-column: 1 / 6;
             font-size: 0.7rem;
             color: $white-1;
+            cursor: pointer;
           }
 
           .slider {
             grid-row: 2;
             grid-column: 1 / 6;
             background-color: $toggle-keypad-background-1;
-            height: 20px;
+            height: 25px;
             border-radius: 15px;
             padding: 5px;
 
             .circle {
-              width: 10px;
+              width: 15px;
               height: 100%;
               border-radius: 270490px;
               background-color: $red-key-background-toggle-1;
               transition: transform 0.5s;
 
-              &--theme-one {
+              &:hover {
+                background-color: $toggle-keypad-hover-1;
+              }
+
+              &--theme-1 {
                 transform: translateX(0px);
               }
 
-              &--theme-two {
-                transform: translateX(25px);
+              &--theme-2 {
+                transform: translateX(18px);
               }
 
-              &--theme-one {
-                transform: translateX(50px);
+              &--theme-3 {
+                transform: translateX(36px);
               }
             }
 
@@ -109,6 +116,7 @@ body {
         text-orientation: sideways-right;
         border: 0;
         border-radius: 8px;
+        text-align: right;
       }
     }
   }
@@ -118,10 +126,21 @@ body {
     padding: 25px;
     display: grid;
     grid-template-columns: repeat(4, minmax(40px, 1fr));
-    grid-template-rows: repeat(5, minmax(55px, 1fr));
+    grid-template-rows: repeat(5, minmax(50px, 1fr));
     gap: 14px;
     border-radius: 8px;
+
+    @media screen and (min-width: 768px) {
+      gap: 24px;
+    }
   }
+}
+
+button {
+  font-family: "League Spartan";
+  padding: 0;
+  border: 0;
+  font-size: 32px;
 }
 
 .key {
