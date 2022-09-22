@@ -1,0 +1,153 @@
+@import "colors";
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
+
+body {
+  background-color: $main-background-1;
+  font-family: "League Spartan", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.h1 {
+  color: $white-1;
+}
+
+.container {
+  height: 100vh;
+  padding: 25px;
+  margin: 0 auto;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  height: 100%;
+
+  &__display {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    flex: 1; // maybe remove later
+
+    .top {
+      display: flex;
+
+      .theme {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 15px;
+
+        &__label {
+          color: $white-1;
+          font-size: 0.7rem;
+          text-transform: uppercase;
+        }
+
+        &__selector {
+          display: grid;
+          grid-template-columns: repeat(5, minmax(3px, 10px));
+          grid-template-rows: repeat(2, 1fr);
+          column-gap: 5px;
+
+          .labels {
+            display: flex;
+            justify-content: space-around;
+            grid-row: 1;
+            grid-column: 1 / 6;
+            font-size: 0.7rem;
+            color: $white-1;
+          }
+
+          .slider {
+            grid-row: 2;
+            grid-column: 1 / 6;
+            background-color: $toggle-keypad-background-1;
+            height: 20px;
+            border-radius: 15px;
+            padding: 5px;
+
+            .circle {
+              width: 10px;
+              height: 100%;
+              border-radius: 270490px;
+              background-color: $red-key-background-toggle-1;
+              transition: transform 0.5s;
+
+              &--theme-one {
+                transform: translateX(0px);
+              }
+
+              &--theme-two {
+                transform: translateX(25px);
+              }
+
+              &--theme-one {
+                transform: translateX(50px);
+              }
+            }
+
+            input[type="radio"] {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    .display {
+      input {
+        font-family: "League Spartan", sans-serif;
+        font-size: 32px;
+        padding: 27px 27px 32px 27px;
+        color: $white-1;
+        height: 87px;
+        width: 100%;
+        background-color: $background-1;
+        text-orientation: sideways-right;
+        border: 0;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  &__pad {
+    background-color: $toggle-keypad-background-1;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(40px, 1fr));
+    grid-template-rows: repeat(5, minmax(55px, 1fr));
+    gap: 14px;
+    border-radius: 8px;
+  }
+}
+
+.key {
+  background-color: $main-key-background-1;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $text-1;
+  box-shadow: 0px 5px $main-key-shadow-1;
+
+  &__action {
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: $white-1;
+    background-color: $blue-key-background-1;
+    box-shadow: 0px 5px $blue-key-shadow-1;
+
+    &--reset {
+      grid-column: 1 / 3;
+    }
+
+    &--equal {
+      background-color: $red-key-background-toggle-1;
+      box-shadow: 0px 5px $red-key-shadow-1;
+      grid-column: 3 / 5;
+    }
+  }
+}

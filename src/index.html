@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Calculator app</title>
+  </head>
+  <body>
+    <main class="container">
+      <section class="calculator">
+        <div class="calculator__display">
+          <div class="top">
+            <div class="title">
+              <h1 class="h1">calc</h1>
+            </div>
+            <div class="theme">
+              <label class="theme__label">theme</label>
+              <div class="theme__selector">
+                <div class="labels">
+                  <label for="theme-1">1</label>
+                  <label for="theme-2">2</label>
+                  <label for="theme-3">3</label>
+                </div>
+                <div class="slider">
+                  <div class="circle"></div>
+                  <input id="theme-1" name="theme" type="radio" />
+                  <input id="theme-2" name="theme" type="radio" />
+                  <input id="theme-3" name="theme" type="radio" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="display">
+            <input type="text" />
+          </div>
+        </div>
+        <div class="calculator__pad">
+          <div class="key">7</div>
+          <div class="key">8</div>
+          <div class="key">9</div>
+          <div class="key key__action">Del</div>
+          <!-- second row !-->
+          <div class="key">4</div>
+          <div class="key">5</div>
+          <div class="key">6</div>
+          <div class="key">+</div>
+          <!-- third row !-->
+          <div class="key">1</div>
+          <div class="key">2</div>
+          <div class="key">3</div>
+          <div class="key">-</div>
+          <!-- fourth row !-->
+          <div class="key">.</div>
+          <div class="key">0</div>
+          <div class="key">/</div>
+          <div class="key">x</div>
+          <!-- second row !-->
+          <div class="key key__action key__action--reset">Reset</div>
+          <div class="key key__action key__action--equal">=</div>
+        </div>
+      </section>
+    </main>
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>
