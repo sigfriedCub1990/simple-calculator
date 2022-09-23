@@ -1,17 +1,17 @@
-@import "colors";
-@import "themes";
-@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
-@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
+@import 'colors';
+@import 'themes';
+@import url('https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
 
 body {
-  font-family: "League Spartan", sans-serif;
+  font-family: 'League Spartan', sans-serif;
   font-size: 32px;
   font-weight: 700;
 }
 
 .h1 {
   @include themify($themes) {
-    color: themed("titleColor");
+    color: themed('titleColor');
   }
 }
 
@@ -19,7 +19,7 @@ body {
   height: 100vh;
   padding: 25px;
   @include themify($themes) {
-    background-color: themed("mainBackground");
+    background-color: themed('mainBackground');
   }
 }
 
@@ -48,7 +48,7 @@ body {
 
         &__label {
           @include themify($themes) {
-            color: themed("titleColor");
+            color: themed('titleColor');
           }
           font-size: 0.7rem;
           text-transform: uppercase;
@@ -68,7 +68,7 @@ body {
             grid-column: 1 / 6;
             font-size: 0.7rem;
             @include themify($themes) {
-              color: themed("titleColor");
+              color: themed('titleColor');
             }
 
             label {
@@ -80,7 +80,7 @@ body {
             grid-row: 2;
             grid-column: 1 / 6;
             @include themify($themes) {
-              background-color: themed("toggleKeypadBackground");
+              background-color: themed('toggleKeypadBackground');
             }
             height: 25px;
             border-radius: 15px;
@@ -91,13 +91,13 @@ body {
               height: 100%;
               border-radius: 270490px;
               @include themify($themes) {
-                background-color: themed("redKeyBackground");
+                background-color: themed('redKeyBackground');
               }
               transition: transform 0.5s;
 
               &:hover {
                 @include themify($themes) {
-                  background-color: themed("keyPadToggle");
+                  background-color: themed('keyPadToggle');
                 }
               }
 
@@ -114,7 +114,7 @@ body {
               }
             }
 
-            input[type="radio"] {
+            input[type='radio'] {
               display: none;
             }
           }
@@ -123,28 +123,44 @@ body {
     }
 
     .display {
+      position: relative;
       input {
-        font-family: "League Spartan", sans-serif;
+        font-family: 'League Spartan', sans-serif;
         font-size: 32px;
         padding: 27px 27px 32px 27px;
         @include themify($themes) {
-          color: themed("titleColor");
+          color: themed('titleColor');
         }
         height: 87px;
         width: 100%;
         @include themify($themes) {
-          background-color: themed("displayBackground");
+          background-color: themed('displayBackground');
         }
         border: 0;
         border-radius: 8px;
         text-align: right;
+      }
+
+      &--has-errors {
+        border: 1px solid #d03f2f;
+        border-radius: 8px;
+
+        &:after {
+          content: 'Malformed expression';
+          font-weight: 400;
+          font-size: 13px;
+          color: #d03f2f;
+          position: absolute;
+          right: 28;
+          top: 68;
+        }
       }
     }
   }
 
   &__pad {
     @include themify($themes) {
-      background-color: themed("toggleKeypadBackground");
+      background-color: themed('toggleKeypadBackground');
     }
     padding: 25px;
     display: grid;
@@ -160,7 +176,7 @@ body {
 }
 
 button {
-  font-family: "League Spartan";
+  font-family: 'League Spartan';
   padding: 0;
   border: 0;
   font-size: 32px;
@@ -168,9 +184,9 @@ button {
 
 .key {
   @include themify($themes) {
-    background-color: themed("keyBackground");
-    box-shadow: 0px 5px themed("keyShadow");
-    color: themed("textColor");
+    background-color: themed('keyBackground');
+    box-shadow: 0px 5px themed('keyShadow');
+    color: themed('textColor');
   }
   border-radius: 8px;
   display: flex;
@@ -185,14 +201,14 @@ button {
     text-transform: uppercase;
     font-size: 1rem;
     @include themify($themes) {
-      background-color: themed("blueKeyBackground");
-      box-shadow: 0px 5px themed("blueKeyShadow");
-      color: themed("actionColor");
+      background-color: themed('blueKeyBackground');
+      box-shadow: 0px 5px themed('blueKeyShadow');
+      color: themed('actionColor');
     }
 
     &:hover {
       @include themify($themes) {
-        background-color: themed("actionHover");
+        background-color: themed('actionHover');
       }
     }
 
@@ -202,14 +218,14 @@ button {
 
     &--equal {
       @include themify($themes) {
-        background-color: themed("redKeyBackground");
-        box-shadow: 0px 5px themed("redKeyShadow");
+        background-color: themed('redKeyBackground');
+        box-shadow: 0px 5px themed('redKeyShadow');
       }
       grid-column: 3 / 5;
 
       &:hover {
         @include themify($themes) {
-          background-color: themed("equalHover");
+          background-color: themed('equalHover');
         }
       }
     }
