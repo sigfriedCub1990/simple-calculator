@@ -3,13 +3,7 @@ import './styles/index.scss';
 
 const toggleThemeClass = (element, theme) => {
   const body = document.querySelector(element);
-  const previousActiveClassRegex = /theme-*/i;
-  const previousActiveClass = [...body.classList.values()].filter((cls) =>
-    previousActiveClassRegex.test(cls)
-  );
-  if (previousActiveClass.length > 0) {
-    body.classList.remove(previousActiveClass);
-  }
+  removePreviousClass(body, /theme-*/i);
 
   switch (theme) {
     case 'theme-1':
@@ -23,29 +17,22 @@ const toggleThemeClass = (element, theme) => {
   }
 };
 
-const changeThemeHandler = (evt) => {
-  if (evt.target.type === 'radio') {
-    const themeCircle = document.querySelector('.circle');
-    const previousActiveClassRegex = /circle-+/i;
-    const previousActiveClass = [...themeCircle.classList.values()].filter(
-      (cls) => previousActiveClassRegex.test(cls)
-    );
-    if (previousActiveClass.length > 0) {
-      themeCircle.classList.remove(previousActiveClass);
-    }
-
-    themeCircle.classList.toggle(`circle--${evt.target.id}`);
-    toggleThemeClass('body', evt.target.id);
-  }
-};
-
-const removePreviousErrors = (element) => {
-  const previousActiveClassRegex = /has-errors/i;
+const removePreviousClass = (element, previousActiveClassRegex) => {
   const previousActiveClass = [...element.classList.values()].filter((cls) =>
     previousActiveClassRegex.test(cls)
   );
   if (previousActiveClass.length > 0) {
     element.classList.remove(previousActiveClass);
+  }
+};
+
+const changeThemeHandler = (evt) => {
+  if (evt.target.type === 'radio') {
+    const themeCircle = document.querySelector('.circle');
+    removePreviousClass(themeCircle, /circle-+/i);
+
+    themeCircle.classList.toggle(`circle--${evt.target.id}`);
+    toggleThemeClass('body', evt.target.id);
   }
 };
 
@@ -59,7 +46,7 @@ const calculatorPadHandler = (evt) => {
         const exp = display.value;
         if (exp.length === 0) return;
         const result = calculate(exp);
-        removePreviousErrors(displayWrapper);
+        removePreviousClass(displayWrapper, /has-errors/i);
         display.value = result;
         return;
       } catch (err) {
@@ -72,7 +59,7 @@ const calculatorPadHandler = (evt) => {
       const displayWrapper = document.querySelector('.display');
       const display = document.querySelector('#display');
       display.value = '';
-      removePreviousErrors(displayWrapper);
+      removePreviousClass(displayWrapper, /has-errors/i);
       return;
     }
 
