@@ -89,5 +89,17 @@ describe("Parser tests", () => {
       const result = evaluate(input);
       expect(result).toEqual(26.66);
     });
+
+    test("should output 20.66", () => {
+      const input = [
+        { value: "+", type: "operator" },
+        { value: "4", type: "operand" },
+        { value: "+", type: "operator" },
+        { value: "4", type: "operand" },
+        { value: "4", type: "operand" },
+      ];
+      const result = evaluate(input);
+      expect(result).toEqual(12);
+    });
   });
 });
