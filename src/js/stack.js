@@ -5,7 +5,7 @@ class Stack {
 
   peak() {
     if (this.isEmpty()) {
-      throw new Error("Stack is empty");
+      throw new Error('Stack is empty');
     } else {
       return this.stack[this.stack.length - 1];
     }

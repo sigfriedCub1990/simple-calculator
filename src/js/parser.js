@@ -1,24 +1,24 @@
-import { compose, curry } from "./fp_utils";
-import Stack from "./stack";
+import { compose, curry } from './fp_utils.js';
+import Stack from './stack.js';
 
 const TYPES = {
-  operator: "operator",
-  operand: "operand",
+  operator: 'operator',
+  operand: 'operand',
 };
 
 // PEMDAS
 const OPERATORS_PRECEDENCE = {
-  "*": 4,
-  "/": 3,
-  "+": 2,
-  "-": 1,
+  '*': 4,
+  '/': 4,
+  '+': 3,
+  '-': 3,
 };
 
 const OPERATORS = {
-  "+": curry((a, b) => a + b),
-  "-": curry((a, b) => a - b),
-  "*": curry((a, b) => a * b),
-  "/": curry((a, b) => a / b),
+  '*': curry((a, b) => a * b),
+  '/': curry((a, b) => a / b),
+  '+': curry((a, b) => a + b),
+  '-': curry((a, b) => a - b),
 };
 
 const numberRegex = /\d/;
@@ -28,18 +28,20 @@ export const tokenize = (exp) => {
   const tokens = [];
   let current = 0;
   while (current < exp.length) {
-    let token = exp[current];
+    const token = exp[current];
     if (numberRegex.test(token)) {
       let number = `${token}`;
       // There must be a better way of doing this ^:(
-      while (numberRegex.test(exp[current + 1]) || exp[current + 1] === ".") {
+      while (numberRegex.test(exp[current + 1]) || exp[current + 1] === '.') {
         number += exp[current + 1];
         current++;
       }
+
       tokens.push({ value: number, type: TYPES.operand });
     } else {
       tokens.push({ value: token, type: TYPES.operator });
     }
+
     current++;
   }
 
@@ -47,8 +49,7 @@ export const tokenize = (exp) => {
 };
 
 export const toPrefix = (tokens) => {
-  // Adapted from https://www.atechdaily.com/posts/infix-to-prefix-notation-algorithm-and-flowchart
-  const tokensCopy = [...tokens];
+  // https://www.free-online-calculator-use.com/infix-to-prefix-converter.html
   const result = [];
   const operatorsStack = new Stack();
   // 1. Reverse initial expression
@@ -101,11 +102,12 @@ export const toPrefix = (tokens) => {
   return result.reverse();
 };
 
-const _parseNumber = (num) => {
-  if (floatRegex.test(num)) {
-    return Number.parseFloat(num);
+const _parseNumber = (number_) => {
+  if (floatRegex.test(number_)) {
+    return Number.parseFloat(number_);
   }
-  return Number.parseInt(num);
+
+  return Number.parseInt(number_);
 };
 
 export const evaluate = (tokens) => {
@@ -125,7 +127,7 @@ export const evaluate = (tokens) => {
     }
   }
 
-  return stack.pop();
+  return stack.pop().value;
 };
 
 export const calculate = (input) => {
