@@ -52,25 +52,40 @@ export const toPrefix = (tokens) => {
   const result = [];
   const operatorsStack = new Stack();
   // 1. Reverse initial expression
-  const reversedTokens = tokensCopy.reverse();
+  const reversedTokens = [...tokens].reverse();
 
   for (const token of reversedTokens) {
     if (token.type === TYPES.operand) {
       result.push(token);
+    } else if (operatorsStack.isEmpty()) {
+      operatorsStack.push(token);
     } else {
-      if (operatorsStack.isEmpty()) {
+      // If current operator has greater precendence than the one at the top of the Stack
+      // we push it into the Stack
+      if (
+        !operatorsStack.isEmpty() &&
+        OPERATORS_PRECEDENCE[token.value] >
+          OPERATORS_PRECEDENCE[operatorsStack.peak().value]
+      ) {
+        operatorsStack.push(token);
+      } else if (
+        OPERATORS_PRECEDENCE[operatorsStack.peak().value] ===
+        OPERATORS_PRECEDENCE[token.value]
+      ) {
         operatorsStack.push(token);
       } else {
         // If there are operators with greater (or equal) precedence than the one we have
         // we push it out of the stack
         while (
           !operatorsStack.isEmpty() &&
-          OPERATORS_PRECEDENCE[operatorsStack.peak().value] >=
+          OPERATORS_PRECEDENCE[operatorsStack.peak().value] >
             OPERATORS_PRECEDENCE[token.value]
         ) {
           const operator = operatorsStack.pop();
           result.push(operator);
         }
+        // Push current operator after poping the ones with greater
+        // precedence
         operatorsStack.push(token);
       }
     }
