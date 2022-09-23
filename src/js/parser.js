@@ -109,17 +109,20 @@ const _parseNumber = (num) => {
 };
 
 export const evaluate = (tokens) => {
+  // https://www.free-online-calculator-use.com/prefix-evaluator.html
   const stack = new Stack();
-  for (const token of tokens) {
-    stack.push(token.value);
-  }
+  for (let i = tokens.length - 1; i >= 0; i--) {
+    if (tokens[i].type === TYPES.operand) {
+      stack.push(tokens[i]);
+    } else {
+      const operator = tokens[i].value;
+      const rightOperand = _parseNumber(stack.pop().value);
+      const leftOperand = _parseNumber(stack.pop().value);
 
-  while (stack.length() !== 1) {
-    let op1 = _parseNumber(stack.pop());
-    let op2 = _parseNumber(stack.pop());
-    let operator = stack.pop();
-    let result = OPERATORS[operator](op2, op1);
-    stack.push(result);
+      const result = OPERATORS[operator](rightOperand, leftOperand);
+
+      stack.push({ value: result, type: TYPES.operand });
+    }
   }
 
   return stack.pop();
