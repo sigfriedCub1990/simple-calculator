@@ -1,0 +1,81 @@
+@import "colors";
+
+$themes: (
+  default: (
+    titleColor: $white-1,
+    textColor: $text-1,
+    mainBackground: $main-background-1,
+    toggleKeypadBackground: $toggle-keypad-background-1,
+    redKeyBackground: $red-key-background-toggle-1,
+    redKeyShadow: $red-key-shadow-1,
+    keyPadToggle: $toggle-keypad-hover-1,
+    displayBackground: $background-1,
+    keyShadow: $main-key-shadow-1,
+    keyBackground: $main-key-background-1,
+    blueKeyBackground: $blue-key-background-1,
+    blueKeyShadow: $blue-key-shadow-1,
+    actionHover: $action-toggle-1,
+    equalHover: $equal-hover-1,
+    actionColor: #fff,
+  ),
+  light: (
+    titleColor: $white-2,
+    textColor: $text-2,
+    mainBackground: $main-background-2,
+    toggleKeypadBackground: $toggle-keypad-background-2,
+    redKeyBackground: $red-key-background-toggle-2,
+    redKeyShadow: $red-key-shadow-2,
+    keyPadToggle: $toggle-keypad-hover-2,
+    displayBackground: $background-2,
+    keyShadow: $main-key-shadow-2,
+    keyBackground: $main-key-background-2,
+    blueKeyBackground: $blue-key-background-2,
+    blueKeyShadow: $blue-key-shadow-2,
+    actionHover: $action-toggle-2,
+    equalHover: $equal-hover-1,
+    actionColor: #fff,
+  ),
+  dark: (
+    titleColor: $text-3,
+    textColor: $text-3,
+    mainBackground: $main-background-3,
+    toggleKeypadBackground: $toggle-keypad-background-3,
+    redKeyBackground: $red-key-background-toggle-3,
+    redKeyShadow: $red-key-shadow-3,
+    keyPadToggle: $toggle-keypad-hover-3,
+    displayBackground: $toggle-keypad-background-3,
+    keyShadow: $main-key-shadow-3,
+    keyBackground: $main-key-background-3,
+    blueKeyBackground: $blue-key-background-3,
+    blueKeyShadow: $blue-key-shadow-3,
+    actionHover: $action-toggle-3,
+    equalHover: $equal-hover-3,
+    actionColor: #fff,
+  ),
+);
+
+/*
+ * Implementation of themes
+ */
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

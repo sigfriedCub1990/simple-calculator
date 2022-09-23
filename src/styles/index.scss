@@ -1,21 +1,26 @@
 @import "colors";
+@import "themes";
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
 
 body {
-  background-color: $main-background-1;
   font-family: "League Spartan", sans-serif;
   font-size: 32px;
   font-weight: 700;
 }
 
 .h1 {
-  color: $white-1;
+  @include themify($themes) {
+    color: themed("titleColor");
+  }
 }
 
 .container {
   height: 100vh;
   padding: 25px;
+  @include themify($themes) {
+    background-color: themed("mainBackground");
+  }
 }
 
 .calculator {
@@ -42,7 +47,9 @@ body {
         gap: 15px;
 
         &__label {
-          color: $white-1;
+          @include themify($themes) {
+            color: themed("titleColor");
+          }
           font-size: 0.7rem;
           text-transform: uppercase;
           align-self: flex-end;
@@ -60,14 +67,21 @@ body {
             grid-row: 1;
             grid-column: 1 / 6;
             font-size: 0.7rem;
-            color: $white-1;
-            cursor: pointer;
+            @include themify($themes) {
+              color: themed("titleColor");
+            }
+
+            label {
+              cursor: pointer;
+            }
           }
 
           .slider {
             grid-row: 2;
             grid-column: 1 / 6;
-            background-color: $toggle-keypad-background-1;
+            @include themify($themes) {
+              background-color: themed("toggleKeypadBackground");
+            }
             height: 25px;
             border-radius: 15px;
             padding: 5px;
@@ -76,11 +90,15 @@ body {
               width: 15px;
               height: 100%;
               border-radius: 270490px;
-              background-color: $red-key-background-toggle-1;
+              @include themify($themes) {
+                background-color: themed("redKeyBackground");
+              }
               transition: transform 0.5s;
 
               &:hover {
-                background-color: $toggle-keypad-hover-1;
+                @include themify($themes) {
+                  background-color: themed("keyPadToggle");
+                }
               }
 
               &--theme-1 {
@@ -109,11 +127,14 @@ body {
         font-family: "League Spartan", sans-serif;
         font-size: 32px;
         padding: 27px 27px 32px 27px;
-        color: $white-1;
+        @include themify($themes) {
+          color: themed("titleColor");
+        }
         height: 87px;
         width: 100%;
-        background-color: $background-1;
-        text-orientation: sideways-right;
+        @include themify($themes) {
+          background-color: themed("displayBackground");
+        }
         border: 0;
         border-radius: 8px;
         text-align: right;
@@ -122,7 +143,9 @@ body {
   }
 
   &__pad {
-    background-color: $toggle-keypad-background-1;
+    @include themify($themes) {
+      background-color: themed("toggleKeypadBackground");
+    }
     padding: 25px;
     display: grid;
     grid-template-columns: repeat(4, minmax(40px, 1fr));
@@ -144,14 +167,15 @@ button {
 }
 
 .key {
-  background-color: $main-key-background-1;
+  @include themify($themes) {
+    background-color: themed("keyBackground");
+    box-shadow: 0px 5px themed("keyShadow");
+    color: themed("textColor");
+  }
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $text-1;
-  box-shadow: 0px 5px $main-key-shadow-1;
-  cursor: pointer;
 
   &:hover {
     background-color: #fff;
@@ -160,12 +184,16 @@ button {
   &__action {
     text-transform: uppercase;
     font-size: 1rem;
-    color: $white-1;
-    background-color: $blue-key-background-1;
-    box-shadow: 0px 5px $blue-key-shadow-1;
+    @include themify($themes) {
+      background-color: themed("blueKeyBackground");
+      box-shadow: 0px 5px themed("blueKeyShadow");
+      color: themed("actionColor");
+    }
 
     &:hover {
-      background-color: $action-toggle-1;
+      @include themify($themes) {
+        background-color: themed("actionHover");
+      }
     }
 
     &--reset {
@@ -173,12 +201,16 @@ button {
     }
 
     &--equal {
-      background-color: $red-key-background-toggle-1;
-      box-shadow: 0px 5px $red-key-shadow-1;
+      @include themify($themes) {
+        background-color: themed("redKeyBackground");
+        box-shadow: 0px 5px themed("redKeyShadow");
+      }
       grid-column: 3 / 5;
 
       &:hover {
-        background-color: $equal-hover-1;
+        @include themify($themes) {
+          background-color: themed("equalHover");
+        }
       }
     }
   }
