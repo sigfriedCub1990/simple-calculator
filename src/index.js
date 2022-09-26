@@ -1,21 +1,27 @@
 import { calculate } from './js/parser.js';
+import { saveTheme, readTheme } from './js/localstorage.js';
+import mitt from 'mitt';
 import './styles/index.scss';
 
-const toggleThemeClass = (element, theme) => {
-  const body = document.querySelector(element);
+const emitter = mitt();
+
+const toggleThemeClass = ({ theme }) => {
+  const body = document.querySelector('body');
   removePreviousClass(body, /theme-*/i);
 
-  switch (theme) {
-    case 'theme-1':
-      body.classList.toggle(`theme-default`);
-      break;
-    case 'theme-2':
-      body.classList.toggle(`theme-light`);
-      break;
-    case 'theme-3':
-      body.classList.toggle(`theme-dark`);
-  }
+  body.classList.toggle(theme);
+  saveTheme(theme);
 };
+
+const updateThemeSelectorToggle = ({ theme }) => {
+  const themeCircle = document.querySelector('.circle');
+  removePreviousClass(themeCircle, /circle-+/i);
+
+  themeCircle.classList.toggle(`circle--${theme}`);
+};
+
+emitter.on('theme.change', toggleThemeClass);
+emitter.on('theme.change', updateThemeSelectorToggle);
 
 const removePreviousClass = (element, previousActiveClassRegex) => {
   const previousActiveClass = [...element.classList.values()].filter((cls) =>
@@ -28,11 +34,7 @@ const removePreviousClass = (element, previousActiveClassRegex) => {
 
 const changeThemeHandler = (evt) => {
   if (evt.target.type === 'radio') {
-    const themeCircle = document.querySelector('.circle');
-    removePreviousClass(themeCircle, /circle-+/i);
-
-    themeCircle.classList.toggle(`circle--${evt.target.id}`);
-    toggleThemeClass('body', evt.target.id);
+    emitter.emit('theme.change', { theme: evt.target.id });
   }
 };
 
@@ -100,6 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const theme = document.querySelector('.theme__selector');
   const calculatorPad = document.querySelector('.calculator__pad');
   const display = document.querySelector('#display');
+
+  const savedTheme = readTheme();
+  if (savedTheme?.theme) {
+    const { theme } = savedTheme;
+    emitter.emit('theme.change', { theme });
+  }
 
   theme.addEventListener('click', changeThemeHandler);
   calculatorPad.addEventListener('click', calculatorPadHandler);

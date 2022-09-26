@@ -16,6 +16,7 @@
   "author": "Ruben",
   "license": "MIT",
   "dependencies": {
+    "mitt": "^3.0.0",
     "parcel": "^2.7.0"
   },
   "xo": {
