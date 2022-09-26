@@ -2,10 +2,10 @@
   "name": "simple-calculator",
   "version": "1.0.0",
   "description": "A simple calculator app",
-  "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "parcel src/index.html"
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
   },
   "keywords": [
     "calculator",
