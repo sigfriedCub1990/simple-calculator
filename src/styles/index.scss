@@ -185,15 +185,16 @@ button {
 }
 
 .key {
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   @include themify($themes) {
     background-color: themed('keyBackground');
     box-shadow: 0px 5px themed('keyShadow');
     color: themed('textColor');
   }
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   &:hover {
     @include themify($themes) {
@@ -204,6 +205,7 @@ button {
   &__action {
     text-transform: uppercase;
     font-size: 1rem;
+
     @include themify($themes) {
       background-color: themed('blueKeyBackground');
       box-shadow: 0px 5px themed('blueKeyShadow');
@@ -221,11 +223,13 @@ button {
     }
 
     &--equal {
+      grid-column: 3 / 5;
+
       @include themify($themes) {
         background-color: themed('redKeyBackground');
         box-shadow: 0px 5px themed('redKeyShadow');
+        color: themed('equalTextColor');
       }
-      grid-column: 3 / 5;
 
       &:hover {
         @include themify($themes) {

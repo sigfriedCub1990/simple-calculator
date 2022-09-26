@@ -1,6 +1,7 @@
-@import "colors";
 @use 'sass:map';
+@import 'colors';
 
+// https://medium.com/@dmitriy.borodiy/easy-color-theming-with-scss-bc38fd5734d1
 $themes: (
   default: (
     titleColor: $white-1,
@@ -18,6 +19,8 @@ $themes: (
     actionHover: $action-toggle-1,
     equalHover: $equal-hover-1,
     actionColor: #fff,
+    keysHover: #fff,
+    equalTextColor: #fff,
   ),
   light: (
     titleColor: $white-2,
@@ -32,9 +35,11 @@ $themes: (
     keyBackground: $main-key-background-2,
     blueKeyBackground: $blue-key-background-2,
     blueKeyShadow: $blue-key-shadow-2,
-    actionHover: $action-toggle-2,
+    actionHover: hsl(184deg 41% 34%),
     equalHover: $equal-hover-1,
     actionColor: #fff,
+    keysHover: #fff,
+    equalTextColor: #fff,
   ),
   dark: (
     titleColor: $text-3,
@@ -49,9 +54,11 @@ $themes: (
     keyBackground: $main-key-background-3,
     blueKeyBackground: $blue-key-background-3,
     blueKeyShadow: $blue-key-shadow-3,
-    actionHover: $action-toggle-3,
-    equalHover: $equal-hover-3,
+    actionHover: #943db9,
+    equalHover: hsl(176deg 93% 33%),
     actionColor: #fff,
+    keysHover: #943db9,
+    equalTextColor: #000,
   ),
 );
 
