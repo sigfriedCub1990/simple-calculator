@@ -1,10 +1,12 @@
-@import 'colors';
-@import 'themes';
+@use 'colors';
+@use 'themes' as *;
 @import url('https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css');
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
 
+$font-stack: 'League Spartan', sans-serif;
+
 body {
-  font-family: 'League Spartan', sans-serif;
+  font-family: $font-stack;
   font-size: 32px;
   font-weight: 700;
 }
@@ -125,7 +127,7 @@ body {
     .display {
       position: relative;
       input {
-        font-family: 'League Spartan', sans-serif;
+        font-family: $font-stack;
         font-size: 32px;
         padding: 27px 27px 32px 27px;
         @include themify($themes) {
@@ -176,7 +178,7 @@ body {
 }
 
 button {
-  font-family: 'League Spartan';
+  font-family: $font-stack;
   padding: 0;
   border: 0;
   font-size: 32px;
@@ -194,7 +196,9 @@ button {
   align-items: center;
 
   &:hover {
-    background-color: #fff;
+    @include themify($themes) {
+      background-color: themed('keysHover');
+    }
   }
 
   &__action {
