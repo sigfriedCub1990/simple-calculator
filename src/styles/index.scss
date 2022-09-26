@@ -101,15 +101,15 @@ body {
                 }
               }
 
-              &--theme-1 {
+              &--theme-default {
                 transform: translateX(0px);
               }
 
-              &--theme-2 {
+              &--theme-light {
                 transform: translateX(18px);
               }
 
-              &--theme-3 {
+              &--theme-dark {
                 transform: translateX(36px);
               }
             }
