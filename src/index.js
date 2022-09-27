@@ -89,7 +89,7 @@ const onKeyupHandler = (evt) => {
       const exp = display.value;
       if (exp.length === 0) return;
       const result = calculate(exp);
-      displayWrapper.classList.toggle('display--has-errors');
+      displayWrapper.classList.remove('display--has-errors');
       display.value = result;
       return;
     } catch (err) {
