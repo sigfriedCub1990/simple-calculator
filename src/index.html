@@ -44,7 +44,9 @@
           <button value="7" class="key">7</button>
           <button value="8" class="key">8</button>
           <button value="9" class="key">9</button>
-          <button value="del" class="key key__action">Del</button>
+          <button value="del" class="key key__action" data-cy="delete">
+            Del
+          </button>
           <!-- second row !-->
           <button value="4" class="key">4</button>
           <button value="5" class="key">5</button>
@@ -61,10 +63,18 @@
           <button value="/" class="key">/</button>
           <button value="*" class="key">x</button>
           <!-- last row !-->
-          <button value="clear" class="key key__action key__action--reset">
+          <button
+            value="clear"
+            class="key key__action key__action--reset"
+            data-cy="reset"
+          >
             Reset
           </button>
-          <button value="calc" class="key key__action key__action--equal">
+          <button
+            value="calc"
+            class="key key__action key__action--equal"
+            data-cy="calc"
+          >
             =
           </button>
         </div>

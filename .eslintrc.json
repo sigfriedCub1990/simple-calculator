@@ -14,5 +14,8 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "rules": {}
+  "rules": {},
+  "globals": {
+    "cy": true
+  }
 }

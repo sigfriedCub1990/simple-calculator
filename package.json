@@ -25,6 +25,7 @@
     "@babel/preset-env": "^7.19.1",
     "@parcel/transformer-sass": "^2.7.0",
     "@types/jest": "^29.0.3",
+    "cypress": "^10.9.0",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^27.0.4",
