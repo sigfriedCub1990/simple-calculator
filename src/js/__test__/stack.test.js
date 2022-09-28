@@ -10,7 +10,8 @@ describe('Stack tests', () => {
   test('should return element at the top of Stack (without modifying it)', () => {
     const stack = new Stack();
 
-    stack.push(1, 2);
+    stack.push(1);
+    stack.push(2);
 
     expect(stack.peak()).toBe(2);
     expect(stack.length()).toBe(2);
@@ -19,7 +20,8 @@ describe('Stack tests', () => {
   test('should return element at the top of Stack', () => {
     const stack = new Stack();
 
-    stack.push(1, 2);
+    stack.push(1);
+    stack.push(2);
 
     expect(stack.pop()).toBe(2);
     expect(stack.length()).toBe(1);
