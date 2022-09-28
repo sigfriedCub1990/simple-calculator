@@ -26,4 +26,12 @@ describe('Stack tests', () => {
     expect(stack.pop()).toBe(2);
     expect(stack.length()).toBe(1);
   });
+
+  test('should throw an Error if trying to peak and empty stack', () => {
+    const stack = new Stack();
+
+    expect(() => stack.peak()).toThrowErrorMatchingInlineSnapshot(
+      `"Stack is empty"`
+    );
+  });
 });
