@@ -65,13 +65,8 @@ export const toPrefix = (tokens) => {
       // we push it into the Stack
       if (
         !operatorsStack.isEmpty() &&
-        OPERATORS_PRECEDENCE[token.value] >
+        OPERATORS_PRECEDENCE[token.value] >=
           OPERATORS_PRECEDENCE[operatorsStack.peak().value]
-      ) {
-        operatorsStack.push(token);
-      } else if (
-        OPERATORS_PRECEDENCE[operatorsStack.peak().value] ===
-        OPERATORS_PRECEDENCE[token.value]
       ) {
         operatorsStack.push(token);
       } else {
